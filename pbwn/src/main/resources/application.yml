@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: pbwn-backend
+  data:
+    mongodb:
+      uri: ${MONGO_URI}
+      database: ${MONGO_DB}

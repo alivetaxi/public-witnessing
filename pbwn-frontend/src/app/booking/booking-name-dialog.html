@@ -1,0 +1,23 @@
+<h2 mat-dialog-title>{{ data.se.date + ' ' + data.se.day }} <br> {{ data.se.slot }}</h2>
+<mat-dialog-content>
+    <mat-form-field>
+        <mat-label>姓名1</mat-label>
+        <input matInput [(ngModel)]="data.names[0]" />
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>姓名2</mat-label>
+        <input matInput [(ngModel)]="data.names[1]" />
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>姓名3</mat-label>
+        <input matInput [(ngModel)]="data.names[2]" />
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>姓名4</mat-label>
+        <input matInput [(ngModel)]="data.names[3]" />
+    </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">取消</button>
+    <button mat-button [mat-dialog-close]="names()">登記</button>
+</mat-dialog-actions>

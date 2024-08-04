@@ -1,0 +1,11 @@
+*/.vscode
+
+*/target
+
+*/.angular
+*/dist
+*/node_modules
+
+.DS_Store
+docker-compose.yml
+.editorconfig

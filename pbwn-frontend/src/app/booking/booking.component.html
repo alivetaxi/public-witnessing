@@ -1,0 +1,35 @@
+<div class="container my-3">
+    <mat-form-field>
+        <mat-label>地點</mat-label>
+        <mat-select [(ngModel)]="location" (selectionChange)="getBooking()">
+            <mat-option *ngFor="let location of locations | keyvalue" [value]="location.key">
+                {{location.value}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field *ngIf="showCalendar">
+        <mat-label>日期</mat-label>
+        <input matInput [matDatepicker]="picker" [matDatepickerFilter]="filterDate"
+            (dateChange)="getDateBooking($event)">
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker touchUi #picker></mat-datepicker>
+    </mat-form-field>
+    <div *ngIf="showBooking">
+        <mat-card appearance="outlined" *ngFor="let se of slotEnrolls">
+            <mat-card-header>
+                <mat-card-title> {{ se.day + ' ' + se.slot }} </mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <mat-chip-set *ngIf="se.names && se.names.length > 0; else noNames">
+                    <mat-chip *ngFor="let name of se.names"> {{ name }} </mat-chip>
+                </mat-chip-set>
+                <ng-template #noNames>
+                    <div class="my-1">尚無人登記</div>
+                </ng-template>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-stroked-button (click)="openDialog(se)">登記</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>
