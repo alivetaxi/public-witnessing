@@ -1,0 +1,19 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'asia-east1-docker.pkg.dev/my-public-witnessing/my-docker-repo/pbwn-image', './pbwn' ]
+  id: 'Build Backend Docker Image'
+
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'asia-east1-docker.pkg.dev/my-public-witnessing/my-docker-repo/pbwn-image' ]
+  id: 'Push Backend Docker Image'
+
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'asia-east1-docker.pkg.dev/my-public-witnessing/my-docker-repo/pbwn-frontend-image', './pbwn-frontend' ]
+  id: 'Build Frontend Docker Image'
+
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'asia-east1-docker.pkg.dev/my-public-witnessing/my-docker-repo/pbwn-frontend-image' ]
+  id: 'Push Frontend Docker Image'
+
+options:
+  logging: CLOUD_LOGGING_ONLY
