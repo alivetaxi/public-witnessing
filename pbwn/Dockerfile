@@ -1,4 +1,4 @@
-FROM --platform=$BUILDPLATFORM maven:3.9.8-amazoncorretto-17 AS builder
+FROM maven:3.9.8-amazoncorretto-17 AS builder
 WORKDIR /workdir/server
 COPY pom.xml /workdir/server/pom.xml
 RUN mvn dependency:go-offline
